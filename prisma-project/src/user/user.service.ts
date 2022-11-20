@@ -6,6 +6,11 @@ export class UserService {
   prisma = new PrismaClient();
 
   async findRelation() {
-    return await this.prisma.user.findMany({ include: { posts: true } });
+    console.time('Prisma');
+    const result = await this.prisma.user.findMany({
+      include: { posts: true },
+    });
+    console.timeEnd('Prisma');
+    return result;
   }
 }

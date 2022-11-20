@@ -10,6 +10,9 @@ export class UserService {
   ) {}
 
   async findRelation(): Promise<User[] | undefined> {
-    return await this.userRepository.find({ relations: ['posts'] });
+    console.time('TypeORM');
+    const result = await this.userRepository.find({ relations: ['posts'] });
+    console.timeEnd('TypeORM');
+    return result;
   }
 }
