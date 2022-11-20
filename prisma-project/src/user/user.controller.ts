@@ -7,9 +7,9 @@ export class UserController {
 
   @Get('/')
   async getUserList() {
-    console.time('TypeORM');
+    console.time('Prisma');
     const result = await this.userService.findRelation();
-    console.timeEnd('TypeORM');
+    console.timeEnd('Prisma');
     return result;
   }
 }
